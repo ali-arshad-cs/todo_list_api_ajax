@@ -1,1 +1,1 @@
-web: gunicorn todoajax.wsgi --log-file
+web: gunicorn todoajax.wsgi --log-file -
