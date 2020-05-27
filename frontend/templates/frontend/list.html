@@ -86,7 +86,7 @@
 
 			<div id="list-wrapper">
 			
-			</div>	
+			</div>
 		</div>
 
     </div>
@@ -97,7 +97,7 @@
 			KEY COMPONENTS:
 			"activeItem" = null until an edit button is clicked. Will contain object of item we are editing
 			"list_snapshot" = Will contain previous state of list. Used for removing extra rows on list update
-			
+
 			PROCESS:
 			1 - Fetch Data and build rows "buildList()"
 			2 - Create Item on form submit
@@ -139,7 +139,7 @@
 
             
 
-            var url = 'http://127.0.0.1:8000/api/task-list'
+            var url = 'http://todo-js.herokuapp.com/api/task-list'
             fetch(url)
             .then((resp) => resp.json())
             .then(function(data){
@@ -213,9 +213,9 @@
         form.addEventListener('submit', function(e){
             e.preventDefault()
             console.log('Submitted')
-            var url = 'http://127.0.0.1:8000/api/task-create'
+            var url = 'http://todo-js.herokuapp.com/api/task-create'
             if (activeItem != null){
-                url = `http://127.0.0.1:8000/api/task-update/${activeItem.id}/`
+                url = `http://todo-js.herokuapp.com/api/task-update/${activeItem.id}/`
                 activeItem = null
             }
             var title = document.getElementById('title').value
@@ -240,7 +240,7 @@
 
         function deleteItem(item){
             console.log('Item deleted')
-            fetch(`http://127.0.0.1:8000/api/task-delete/${item.id}/`,{
+            fetch(`http://todo-js.herokuapp.com/api/task-delete/${item.id}/`,{
                 method: 'DELETE',
                 headers:{
                     'Content-type':'application/json',
@@ -254,7 +254,7 @@
         function strikeUnstrike(item){
             console.log('Strike Called')
             item.completed = !item.completed
-            fetch(`http://127.0.0.1:8000/api/task-update/${item.id}/` , {
+            fetch(`http://todo-js.herokuapp.com/api/task-update/${item.id}/` , {
                 method: 'POST',
                 headers:{
                     'Content-type':'application/json',
